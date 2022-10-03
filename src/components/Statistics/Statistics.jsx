@@ -24,7 +24,7 @@ export const Statistics = props => {
         </Item>
         <Item>
           <span>Positive feedback: </span>
-          <span>{good && positivePercentage()}%</span>
+          <span>{positivePercentage()}%</span>
         </Item>
       </ul>
     </div>

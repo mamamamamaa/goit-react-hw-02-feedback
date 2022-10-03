@@ -1,41 +1,27 @@
 import PropTypes from 'prop-types';
 import { Item } from './FeedbackOptions.styled';
 
-export const FeedbackOptions = props => {
-  const [good, neutral, bad] = props.options;
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div>
       <ul>
-        <Item>
-          <button
-            type="button"
-            onClick={() => {
-              props.onLeaveFeedback(good);
-            }}
-          >
-            Good
-          </button>
-        </Item>
-        <Item>
-          <button
-            type="button"
-            onClick={() => {
-              props.onLeaveFeedback(neutral);
-            }}
-          >
-            Neutral
-          </button>
-        </Item>
-        <Item>
-          <button
-            type="button"
-            onClick={() => {
-              props.onLeaveFeedback(bad);
-            }}
-          >
-            Bad
-          </button>
-        </Item>
+        {options &&
+          options.map(option => (
+            <Item key={option}>
+              <button
+                type="button"
+                onClick={() => {
+                  onLeaveFeedback(option);
+                }}
+              >
+                {capitalize(option)}
+              </button>
+            </Item>
+          ))}
       </ul>
     </div>
   );
